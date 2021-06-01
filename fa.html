@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>TIC2151 - Assignment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <nav class="navbar-brand navbar-light bg-light">
+    <a class="btn btn-dark" href = 'index.html' role="button" aria-disabled="true">Home</a>
+    <a class="btn btn-dark" href = 'fa.html' role="button" aria-disabled>Finite Automata</a>
+  </nav>
+  <p class='lead text-center'>TIC2151 - Theory of Computation</p>
+  <div class = 'jumbotron text-center'>
+    <h1 class="display-4">Finite Automata</h1>
+    <br>
+    <h5>Conversion of &epsilon;-NFA to Minimized DFA</h5>
+  </div>
+  <div class = 'container'>
+    <div class = 'row'>
+      <div class = 'col-sm-4'>
+        <p class = 'lead text-center'> Fill in NFA or DFA </p>
+      </div>
+    </div>
+    <div class = 'row'>
+      <div class = 'col-sm-4'>
+        <table class ='table' id = 'fa-table'>
+          <tbody>
+            <tr>
+              <th>&Sigma;</th>
+              <td><input id = 'e0' type='text' class = 'form-control'></td>
+              <td><input id = 'e1' type='text' class = 'form-control'></td>
+              <td><input id = 'e2' type='text' class = 'form-control'></td>
+              <td><input id = 'e3' type='text' class = 'form-control'></td>
+            </tr>
+            <tr>
+              <th>V</th>
+              <td><input id = 'v0' type='text' class = 'form-control'></td>
+              <td><input id = 'v1' type='text' class = 'form-control'></td>
+              <td><input id = 'v2' type='text' class = 'form-control'></td>
+              <td><input id = 'v3' type='text' class = 'form-control'></td>
+            </tr>
+            <tr>
+              <th>START</th>
+              <td><input id = 's0' type='text' class = 'form-control'></td>
+              <td><input id = 's1' type='text' class = 'form-control'></td>
+              <td><input id = 's2' type='text' class = 'form-control'></td>
+              <td><input id = 's3' type='text' class = 'form-control'></td>
+            </tr>
+            <tr>
+              <th>FINAL</th>
+              <td><input id = 'f0' type='text' class = 'form-control'></td>
+              <td><input id = 'f1' type='text' class = 'form-control'></td>
+              <td><input id = 'f2' type='text' class = 'form-control'></td>
+              <td><input id = 'f3' type='text' class = 'form-control'></td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <button id=submitButton onclick="format_input_transition_table();this.disabled=true;" >Proceed</button>
+        <br>
+        <br>
+        <p class = 'lead text-center'> Fill in the Transition Table </p>
+        <table class = 'table' id = 'transition-table'>
+          <tbody>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input id = 'e0' type='text' class = 'form-control'></td>
+              <td><input id = 'e1' type='text' class = 'form-control'></td>
+              <td><input id = 'e2' type='text' class = 'form-control'></td>
+              <td><input id = 'e3' type='text' class = 'form-control'></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input id = 'v0' type='text' class = 'form-control'></td>
+              <td><input id = 'v1' type='text' class = 'form-control'></td>
+              <td><input id = 'v2' type='text' class = 'form-control'></td>
+              <td><input id = 'v3' type='text' class = 'form-control'></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input id = 's0' type='text' class = 'form-control'></td>
+              <td><input id = 's1' type='text' class = 'form-control'></td>
+              <td><input id = 's2' type='text' class = 'form-control'></td>
+              <td><input id = 's3' type='text' class = 'form-control'></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input id = 'f0' type='text' class = 'form-control'></td>
+              <td><input id = 'f1' type='text' class = 'form-control'></td>
+              <td><input id = 'f2' type='text' class = 'form-control'></td>
+              <td><input id = 'f3' type='text' class = 'form-control'></td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <button id=submitButton2 onclick="
+        initialise_variable_nodes();
+        get_transitions();
+        initialise_original_destination();
+        check_start_state_for_epsilon();
+        remove_epsilon();
+        display_transitions();
+        display_non_e_transitions();
+        reset_destinations();
+        initialise_non_e_destination();
+        save_sucessful_alert();
+
+        create_dfa_variables();
+        output_dfa_transition();
+        display_dfa();
+        relabel_variable();
+        display_relabelled_dfa();
+
+        remove_unreachable_state();
+        display_reachable_dfa();
+
+        grouping_dfa();
+        display_minimized_dfa();
+
+        this.disabled=true;
+        " >Proceed</button>
+        <br>
+        <br>
+        <div id = "save-successful">
+          
+        </div>
+      </div>
+      <div class = 'col-sm-2.5'>
+        <div class="btn-group-vertical">
+          <button class="btn btn-primary" data-toggle="collapse" data-target="#multiCollapse1" role="button" aria-expanded="false" aria-controls="multiCollapse1">
+            Table with &epsilon;
+          </button>
+          <br>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapse2" aria-expanded="false" aria-controls="multiCollapse2">
+            Table without &epsilon;
+          </button>
+          <br>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapse3" aria-expanded="false" aria-controls="multiCollapse3">
+            DFA
+          </button>
+          <br>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapse4" aria-expanded="false" aria-controls="multiCollapse4">
+            Minimized DFA
+          </button>
+          <br>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapse5" aria-expanded="false" aria-controls="multiCollapse5">
+            Test String
+          </button>
+
+        </div>
+      </div>
+      <div class = 'col-sm-5'>
+        <div class="collapse multi-collapse" id="multiCollapse1">
+          <div class="card card-body">
+            <p class = 'lead text-center'> NFA with &epsilon; </p>
+            <table class="table" id='original-transition-table'>
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = E0></td>
+                  <td id = E1></td>
+                  <td id = E2></td>
+                  <td id = E3></td>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = V0></td>
+                  <td id = V1></td>
+                  <td id = V2></td>
+                  <td id = V3></td>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = S0></td>
+                  <td id = S1></td>
+                  <td id = S2></td>
+                  <td id = S3></td>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = F0></td>
+                  <td id = F1></td>
+                  <td id = F2></td>
+                  <td id = F3></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <br>
+        <div class="collapse multi-collapse" id="multiCollapse2">
+          <div class="card card-body">
+            <p class = 'lead text-center'> NFA without &epsilon; </p>
+            <table class="table" id='non-e-transition-table'>
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = E0></td>
+                  <td id = E1></td>
+                  <td id = E2></td>
+                  <td id = E3></td>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = V0></td>
+                  <td id = V1></td>
+                  <td id = V2></td>
+                  <td id = V3></td>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = S0></td>
+                  <td id = S1></td>
+                  <td id = S2></td>
+                  <td id = S3></td>
+                </tr>
+                <tr>
+                  <th ></th>
+                  <td id = F0></td>
+                  <td id = F1></td>
+                  <td id = F2></td>
+                  <td id = F3></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <br>
+        <div class="collapse multi-collapse" id="multiCollapse3">
+          <div class="card card-body">
+            <p class = 'lead text-center'> DFA </p>
+            <table class="table" id='dfa-table'>
+              <!-- Input through index.js-->
+            </table>
+            <br>
+            <h3 class = 'lead text-center'>&darr;</h3>
+            <br>
+            <p class = 'lead text-center'>Relabelled DFA</p>
+            <table class="table" id='relabelled-dfa-table'>
+              <!-- Input through index.js-->
+            </table>
+          </div>
+        </div>
+        <br>
+        <div class="collapse multi-collapse" id="multiCollapse4">
+          <div class="card card-body">
+            <p class = 'lead text-center'> Removed Unreachable States </p>
+            <table class="table" id="reachable-dfa-table">
+              <!-- Input through index.js-->
+            </table>
+            <br>
+            <h3 class = 'lead text-center'>&darr;</h3>
+            <br>
+            <p class = 'lead text-center'>Minimized DFA</p>
+            <table class="table" id="minimized-dfa-table">
+              <!-- Input through index.js-->
+            </table>
+          </div>
+        </div>
+        <br>
+        <div class="collapse multi-collapse" id="multiCollapse5">
+          <div class="card card-body">
+            <p class = 'lead text-center'> Input String for Testing </p>
+            <label class = 'lead text-center' >String :</label>
+            <input type="text" id = "test1" name = "test" class = 'form-control'><p id="result1"></p><br>
+            <input type="text" id = "test2" name = "test" class = 'form-control'><p id="result2"></p><br>
+            <input type="text" id = "test3" name = "test" class = 'form-control'><p id="result3"></p><br>
+            <input type="text" id = "test4" name = "test" class = 'form-control'><p id="result4"></p><br>
+            <input type="text" id = "test5" name = "test" class = 'form-control'><p id="result5"></p><br>
+            <button id=submitButton2 onclick="string_test()">Proceed</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    
+
+</body>
+
+</html>
