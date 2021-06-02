@@ -1,5 +1,16 @@
 # TOC_FiniteAutomata
 
+### Introduction 
+
+This application with the function of transforming a given NFA as an input to a DFA. The application includes step by step transformation functions and a function to test the given input string. The supported functions include: 
+
+1. Convert ε-NFA into an NFA without ε-transitions. 
+2. Convert NFAs into DFAs. 
+3. Minimizes DFAs.
+4. Testing strings (up to 5 strings at once) and statements to inform the user whether each string is accepted or rejected by the Machine.
+
+To build this application which implements the above function efficiently, we chose to develop this WebApp mainly based on html and bootstrap for the display and javascript for implementing the functions and algorithms. The application includes a main html file (index.html) which will allow the use to enter into the main page of the application, where it shows the information regarding the group members. Then, users will be able to proceed to another html file (fa.html) which functions to take user input and output the minimization of DFA. Finally, the functions and algorithms are stored in the only javascript file (index.js).
+
 
 ### To use the webapp:
 
